@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>check_min_size: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">PietroskiCypher/data/usecontrollers/decode/check_min_size/check_min_size.go (100.0%)</option>
+				
+				<option value="file1">PietroskiCypher/data/usecontrollers/decode/decode.go (100.0%)</option>
+				
+				<option value="file2">PietroskiCypher/data/usecontrollers/decode/remove_random_runes/remove_random_runes.go (100.0%)</option>
+				
+				<option value="file3">PietroskiCypher/data/usecontrollers/decode/unshift_rune_slice/unshift_rune_slice.go (100.0%)</option>
+				
+				<option value="file4">PietroskiCypher/data/usecontrollers/encode/check_max_size/check_max_size.go (100.0%)</option>
+				
+				<option value="file5">PietroskiCypher/data/usecontrollers/encode/encode.go (100.0%)</option>
+				
+				<option value="file6">PietroskiCypher/data/usecontrollers/encode/inject_random_runes/inject_random_runes.go (95.7%)</option>
+				
+				<option value="file7">PietroskiCypher/data/usecontrollers/encode/shift_rune_slice/shift_rune_slice.go (100.0%)</option>
+				
+				<option value="file8">PietroskiCypher/data/usecontrollers/generics/helpers.go (95.0%)</option>
+				
+				<option value="file9">PietroskiCypher/data/usecontrollers/generics/rune_slice_to_string/rune_slice_to_string.go (100.0%)</option>
+				
+				<option value="file10">PietroskiCypher/data/usecontrollers/generics/string_to_rune_slice/string_to_rune_slice.go (100.0%)</option>
+				
+				<option value="file11">PietroskiCypher/data/usecontrollers/generics/test_executer.go (86.4%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package check_min_size
+
+// CheckMinSize checks the maximum size of a rune slice
+func CheckMinSize(initialSliceSize int, finalSliceSize int, injectionFactor int) bool <span class="cov8" title="1">{
+        ms := MinSize(initialSliceSize, injectionFactor)
+        if finalSliceSize != ms </span><span class="cov8" title="1">{
+                return false
+        }</span>
+
+        <span class="cov8" title="1">return true</span>
+}
+
+// MinSize checks the minimum size of a rune slice
+func MinSize(rsSize int, injf int) int <span class="cov8" title="1">{
+        letters := 0
+        litters := 0
+
+        var checker int
+
+        minSize := rsSize - (2 * injf)
+
+        for i := 0; i &lt; minSize &amp;&amp; checker &lt; minSize; i++ </span><span class="cov8" title="1">{
+                letters++
+                litters += injf
+
+                checker = letters + litters
+        }</span>
+
+        <span class="cov8" title="1">return letters</span>
+}
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package decode
+
+import (
+        "PietroskiCypher/data/usecontrollers/decode/remove_random_runes"
+        "PietroskiCypher/data/usecontrollers/decode/unshift_rune_slice"
+        "PietroskiCypher/data/usecontrollers/generics/rune_slice_to_string"
+        "PietroskiCypher/data/usecontrollers/generics/string_to_rune_slice"
+)
+
+// Decode encodes any string
+func Decode(stringToDecode string, shiftFactor int, injectionFactor int) string <span class="cov8" title="1">{
+        strx := string_to_rune_slice.StringToRuneSlice(stringToDecode)
+        srx := unshift_rune_slice.UnshiftRuneSlice(strx, shiftFactor)
+        rrr := remove_random_runes.RemoveRandomRunes(srx, injectionFactor)
+        rxts := rune_slice_to_string.RuneSliceToString(rrr)
+        return rxts
+}</span>
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package remove_random_runes
+
+// RemoveRandomRunes from a slice of runes
+func RemoveRandomRunes(rs []rune, injectionFactor int) []rune <span class="cov8" title="1">{
+        rsSize := len(rs)
+        var nrs = make([]rune, 0, rsSize)
+
+        index := injectionFactor
+        for index &lt; rsSize </span><span class="cov8" title="1">{
+                v := rs[index]
+                nrs = append(nrs, v)
+
+                index += injectionFactor + 1
+        }</span>
+
+        <span class="cov8" title="1">return nrs</span>
+}
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package unshift_rune_slice
+
+const LIMITER = 1_112_064
+
+// UnshiftRuneSlice shifts every rune os the slice of runes
+func UnshiftRuneSlice(rx []rune, shifter int) []rune <span class="cov8" title="1">{
+        var nrx []rune
+
+        for _, r := range rx </span><span class="cov8" title="1">{
+                rint := int(r)
+                sftrOp := rint - shifter
+
+                if sftrOp &gt;= 0 </span><span class="cov8" title="1">{
+                        nrc := rune(sftrOp)
+                        nrx = append(nrx, nrc)
+                }</span> else<span class="cov8" title="1"> {
+                        newSftrOp := LIMITER + sftrOp
+                        nrc := rune(newSftrOp)
+                        nrx = append(nrx, nrc)
+                }</span>
+        }
+
+        <span class="cov8" title="1">return nrx</span>
+}
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package check_max_size
+
+// CheckMaxSize checks the maximum size of a rune slice
+func CheckMaxSize(iasSize int, asSize int, injectionFactor int) bool <span class="cov8" title="1">{
+        ms := MaxSize(iasSize, injectionFactor)
+        if asSize != ms </span><span class="cov8" title="1">{
+                return false
+        }</span>
+
+        <span class="cov8" title="1">return true</span>
+}
+
+// MaxSize checks the maximum size of a rune slice
+func MaxSize(rsSize int, ijf int) int <span class="cov8" title="1">{
+        maxSize := (rsSize + 1) * ijf + rsSize
+
+        return maxSize
+}</pre>
+		
+		<pre class="file" id="file5" style="display: none">package encode
+
+import (
+        "PietroskiCypher/data/usecontrollers/encode/inject_random_runes"
+        "PietroskiCypher/data/usecontrollers/encode/shift_rune_slice"
+        "PietroskiCypher/data/usecontrollers/generics/rune_slice_to_string"
+        "PietroskiCypher/data/usecontrollers/generics/string_to_rune_slice"
+)
+
+// Encode encodes any string
+func Encode(stringToEncode string, shiftFactor int, injectionFactor int) string <span class="cov8" title="1">{
+        strx := string_to_rune_slice.StringToRuneSlice(stringToEncode)
+        srx := shift_rune_slice.ShiftRuneSlice(strx, shiftFactor)
+        irr := inject_random_runes.InjectRandomRunes(srx, injectionFactor)
+        rxts := rune_slice_to_string.RuneSliceToString(irr)
+        return rxts
+}</span>
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package inject_random_runes
+
+import (
+        "PietroskiCypher/data/usecontrollers/encode/check_max_size"
+        "log"
+        "math/rand"
+        "time"
+)
+
+// InjectRandomRunes into a slice of runes
+func InjectRandomRunes(rs []rune, ijf int) []rune <span class="cov8" title="1">{
+        rand.Seed(time.Now().UnixNano())
+
+        rsSize := len(rs)
+
+        var tmps []rune
+
+        for i := 0; i &lt; rsSize; i++ </span><span class="cov8" title="1">{
+                tsr := RandomRuneSliceGenerator(ijf)
+
+                if i == 0 </span><span class="cov8" title="1">{
+                        tmps = append(tsr)
+                }</span>
+
+                <span class="cov8" title="1">srs := []rune{rs[i]}
+                itmps := append(srs, tsr...)
+                tmps = append(tmps, itmps...)</span>
+        }
+
+        <span class="cov8" title="1">tmpsSize := len(tmps)
+        vrf := check_max_size.CheckMaxSize(rsSize, tmpsSize, ijf)
+        if !vrf </span><span class="cov0" title="0">{
+                log.Fatalln("Error encrypting rune slice!!")
+        }</span>
+
+        <span class="cov8" title="1">return tmps</span>
+}
+
+
+// RandomRuneSliceGenerator generates a rune slice randomly of a fixed size
+func RandomRuneSliceGenerator(ijf int) []rune <span class="cov8" title="1">{
+        r := make([]rune, ijf)
+
+        for i, _ := range r </span><span class="cov8" title="1">{
+                r[i] = RandomRuneGenerator(33, 127)
+        }</span>
+
+        <span class="cov8" title="1">return r</span>
+}
+
+
+// RandomRuneGenerator generates a random rune between a
+// minimum (including) and maximum (excluding) integer value
+func RandomRuneGenerator(min int, max int) rune <span class="cov8" title="1">{
+        rg := max - min
+        rn := min + rand.Intn(rg)
+        r := rune(rn)
+
+        return r
+}</span>
+</pre>
+		
+		<pre class="file" id="file7" style="display: none">package shift_rune_slice
+
+const LIMITER = 1_112_064
+
+// ShiftRuneSlice shifts every rune os the slice of runes
+func ShiftRuneSlice(rx []rune, shifter int) []rune <span class="cov8" title="1">{
+        var nrx []rune
+
+        for _, r := range rx </span><span class="cov8" title="1">{
+                rint := int(r)
+                sftrOp := rint + shifter
+
+                if sftrOp &lt; LIMITER </span><span class="cov8" title="1">{
+                        nrc := rune(sftrOp)
+                        nrx = append(nrx, nrc)
+                }</span> else<span class="cov8" title="1"> {
+                        newSftrOp := (LIMITER - sftrOp)*(-1)
+                        nrc := rune(newSftrOp)
+                        nrx = append(nrx, nrc)
+                }</span>
+        }
+
+        <span class="cov8" title="1">return nrx</span>
+}
+
+</pre>
+		
+		<pre class="file" id="file8" style="display: none">package generics
+
+import (
+        "reflect"
+)
+
+// MapToSlice sorts a map by its keys of type int
+// and converts it into a slice
+func MapToSlice(m interface{}) reflect.Value <span class="cov8" title="1">{
+        mValue := reflect.ValueOf(m)
+        mType := mValue.Type()
+        mElemType := mType.Elem()
+        mSliceType := reflect.SliceOf(mElemType)
+
+        if mType.Kind() != reflect.Map &amp;&amp; mType.Kind() != reflect.Interface </span><span class="cov0" title="0">{
+                panic("Map parameter's type is not a map")</span>
+        }
+
+        <span class="cov8" title="1">mSize := mValue.Len()
+        newSlice := reflect.MakeSlice(mSliceType, 0, mSize)
+
+        for i := 0; i &lt; mSize; i++ </span><span class="cov8" title="1">{
+                indx := reflect.ValueOf(i)
+                v := mValue.MapIndex(indx)
+                newSlice = reflect.Append(newSlice, v)
+        }</span>
+
+        <span class="cov8" title="1">return newSlice</span>
+}
+
+func SliceOfValuesIntoSliceOfRunes(value reflect.Value) []rune <span class="cov8" title="1">{
+        valueSize := value.Len()
+
+        runeSlice := make([]rune, 0, valueSize)
+
+        for i := 0; i &lt; valueSize; i++ </span><span class="cov8" title="1">{
+                rv := value.Index(i)
+                r := rune(rv.Int())
+
+                runeSlice = append(runeSlice, r)
+        }</span>
+
+        <span class="cov8" title="1">return runeSlice</span>
+}</pre>
+		
+		<pre class="file" id="file9" style="display: none">package rune_slice_to_string
+
+// RuneSliceToString converts a slice of runes into a string
+func RuneSliceToString(r []rune) string <span class="cov8" title="1">{
+        str := string(r)
+        return str
+}</span>
+</pre>
+		
+		<pre class="file" id="file10" style="display: none">package string_to_rune_slice
+
+// StringToRuneSlice converts a string into a slice of runes
+func StringToRuneSlice(str string) []rune <span class="cov8" title="1">{
+        runeSlice := []rune(str)
+        return runeSlice
+}</span>
+</pre>
+		
+		<pre class="file" id="file11" style="display: none">package generics
+
+import (
+        "fmt"
+        "github.com/Pietroski/timecounter/timescale"
+        "reflect"
+        "timecounter"
+)
+
+// Tester is used to execute and time function execution
+func Tester(function interface{}, parameters ...interface{}) []reflect.Value <span class="cov8" title="1">{
+        funcValue := reflect.ValueOf(function)
+        funcParams := reflect.ValueOf(parameters)
+
+        funcValueType := funcValue.Type()
+        funcParamsType := funcParams.Type()
+
+        if funcValueType.Kind() != reflect.Func </span><span class="cov0" title="0">{
+                panic(fmt.Sprintf("function parameter is not of function type"))</span>
+        }
+
+        <span class="cov8" title="1">if funcParamsType.Kind() != reflect.Slice &amp;&amp; funcParamsType.Kind() != reflect.Array </span><span class="cov0" title="0">{
+                panic("parameters parameter's type is neither array nor slice.")</span>
+        }
+
+        <span class="cov8" title="1">funcParamsSize := funcParams.Len()
+
+        var paramsSlice = make([]reflect.Value, 0, funcParamsSize)
+
+        for i := 0; i &lt; funcParamsSize; i++ </span><span class="cov8" title="1">{
+                argsValues := funcParams.Index(i)
+                argsValuesTypes := argsValues.Elem().Type()
+
+                if !argsValuesTypes.ConvertibleTo(funcValueType.In(i)) </span><span class="cov0" title="0">{
+                        panic(fmt.Sprintf("Argument is not compatible with the function's argument number %v", i+1))</span>
+                }
+
+                <span class="cov8" title="1">paramsSlice = append(paramsSlice, argsValues.Elem())</span>
+        }
+
+        <span class="cov8" title="1">timecounter.TimeCounter(timescale.NANOSECONDS)
+        timecounter.Start()
+        fro := funcValue.Call(paramsSlice)
+        timecounter.End()
+        timecounter.PrintTime()
+
+        return fro</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

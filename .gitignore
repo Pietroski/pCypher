@@ -1,0 +1,5 @@
+# Goland IDE
+.idea
+
+# Go mod vendor files
+vendor
