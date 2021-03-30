@@ -1,4 +1,4 @@
-module PietroskiCypher
+module github.com/Pietroski/pCypher
 
 go 1.16
 
