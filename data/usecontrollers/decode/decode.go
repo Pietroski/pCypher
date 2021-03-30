@@ -1,10 +1,10 @@
 package decode
 
 import (
-	"PietroskiCypher/data/usecontrollers/decode/remove_random_runes"
-	"PietroskiCypher/data/usecontrollers/decode/unshift_rune_slice"
-	"PietroskiCypher/data/usecontrollers/generics/rune_slice_to_string"
-	"PietroskiCypher/data/usecontrollers/generics/string_to_rune_slice"
+	"github.com/Pietroski/pCypher/data/usecontrollers/decode/remove_random_runes"
+	"github.com/Pietroski/pCypher/data/usecontrollers/decode/unshift_rune_slice"
+	"github.com/Pietroski/pCypher/data/usecontrollers/generics/rune_slice_to_string"
+	"github.com/Pietroski/pCypher/data/usecontrollers/generics/string_to_rune_slice"
 )
 
 // Decode encodes any string

@@ -2,9 +2,9 @@ package generics
 
 import (
 	"fmt"
+	"github.com/Pietroski/timecounter"
 	"github.com/Pietroski/timecounter/timescale"
 	"reflect"
-	"timecounter"
 )
 
 // Tester is used to execute and time function execution

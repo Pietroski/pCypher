@@ -1,7 +1,8 @@
 package generics
 
 import (
-	"PietroskiCypher/data/usecases/errors"
+	"github.com/Pietroski/pCypher/data/usecases/errors"
+
 	"fmt"
 	"reflect"
 	"testing"

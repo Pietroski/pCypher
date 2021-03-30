@@ -1,14 +1,14 @@
 package encode
 
 import (
-	"PietroskiCypher/data/usecases/errors"
-	"PietroskiCypher/data/usecases/messages"
-	"PietroskiCypher/data/usecontrollers/encode/check_max_size"
-	"PietroskiCypher/data/usecontrollers/generics"
 	"fmt"
+	"github.com/Pietroski/pCypher/data/usecases/errors"
+	"github.com/Pietroski/pCypher/data/usecases/messages"
+	"github.com/Pietroski/pCypher/data/usecontrollers/encode/check_max_size"
+	"github.com/Pietroski/pCypher/data/usecontrollers/generics"
+	"github.com/Pietroski/timecounter"
 	"github.com/Pietroski/timecounter/timescale"
 	"testing"
-	"timecounter"
 )
 
 // EStruct struct type

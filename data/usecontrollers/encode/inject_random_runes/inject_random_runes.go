@@ -1,7 +1,7 @@
 package inject_random_runes
 
 import (
-	"PietroskiCypher/data/usecontrollers/encode/check_max_size"
+	"github.com/Pietroski/pCypher/data/usecontrollers/encode/check_max_size"
 	"log"
 	"math/rand"
 	"time"

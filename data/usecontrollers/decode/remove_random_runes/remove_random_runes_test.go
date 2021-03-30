@@ -1,15 +1,15 @@
 package remove_random_runes
 
 import (
-	"PietroskiCypher/data/usecases/errors"
-	"PietroskiCypher/data/usecases/messages"
-	"PietroskiCypher/data/usecontrollers/decode/check_min_size"
-	"PietroskiCypher/data/usecontrollers/generics"
+	"github.com/Pietroski/pCypher/data/usecases/errors"
+	"github.com/Pietroski/pCypher/data/usecases/messages"
+	"github.com/Pietroski/pCypher/data/usecontrollers/decode/check_min_size"
+	"github.com/Pietroski/pCypher/data/usecontrollers/generics"
 
 	"fmt"
+	"github.com/Pietroski/timecounter"
 	"github.com/Pietroski/timecounter/timescale"
 	"testing"
-	"timecounter"
 )
 
 // InjectRandomRuneTest Tests

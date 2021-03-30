@@ -1,13 +1,13 @@
 package unshift_rune_slice
 
 import (
-	"PietroskiCypher/data/usecases/errors"
-	"PietroskiCypher/data/usecases/messages"
 	"fmt"
+	"github.com/Pietroski/pCypher/data/usecases/errors"
+	"github.com/Pietroski/pCypher/data/usecases/messages"
+	"github.com/Pietroski/timecounter"
 	"github.com/Pietroski/timecounter/timescale"
 	"reflect"
 	"testing"
-	"timecounter"
 )
 
 type USRSStruct struct {

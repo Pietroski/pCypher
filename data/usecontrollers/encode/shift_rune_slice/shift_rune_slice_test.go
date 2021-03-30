@@ -1,14 +1,14 @@
 package shift_rune_slice
 
 import (
-	"PietroskiCypher/data/usecases/errors"
-	"PietroskiCypher/data/usecases/messages"
-	"PietroskiCypher/data/usecontrollers/generics"
 	"fmt"
+	"github.com/Pietroski/pCypher/data/usecases/errors"
+	"github.com/Pietroski/pCypher/data/usecases/messages"
+	"github.com/Pietroski/pCypher/data/usecontrollers/generics"
+	"github.com/Pietroski/timecounter"
 	"github.com/Pietroski/timecounter/timescale"
 	"reflect"
 	"testing"
-	"timecounter"
 )
 
 type SRSStruct struct {

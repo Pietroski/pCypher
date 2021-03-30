@@ -1,15 +1,15 @@
 package inject_random_runes
 
 import (
-	"PietroskiCypher/data/usecases/errors"
-	"PietroskiCypher/data/usecases/messages"
-	"PietroskiCypher/data/usecontrollers/encode/check_max_size"
+	"github.com/Pietroski/pCypher/data/usecases/errors"
+	"github.com/Pietroski/pCypher/data/usecases/messages"
+	"github.com/Pietroski/pCypher/data/usecontrollers/encode/check_max_size"
 
 	"fmt"
+	"github.com/Pietroski/timecounter"
 	"github.com/Pietroski/timecounter/timescale"
 	"log"
 	"testing"
-	"timecounter"
 )
 
 // InjectRandomRuneTest Tests
