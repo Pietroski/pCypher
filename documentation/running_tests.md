@@ -1,6 +1,6 @@
 # Running Tests
 
-For running controller tests, go to `/src/data/usecontrollers/` and simply type on terminal:
+For running controller tests, go to `/data/usecontrollers/` and simply type on terminal:
 
 ```shell
 go test -v -coverprofile ./test_results/cover.out ./...
